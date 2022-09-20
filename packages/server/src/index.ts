@@ -1,1 +1,1 @@
-console.log('run')
+import './server';
