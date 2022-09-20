@@ -3,6 +3,9 @@ generates:
   ./src/resolvers-types.ts:
     config:
       useIndexSignature: true
+      defaultMapper: DeepPartial<{T}> # https://github.com/dotansimha/graphql-code-generator/issues/3324
     plugins:
       - typescript
       - typescript-resolvers
+      - add:
+          content: 'type DeepPartial<T> = T extends object ? {[P in keyof T]?: DeepPartial<T[P]>;} : T;'

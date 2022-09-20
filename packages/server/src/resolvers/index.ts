@@ -1,7 +1,12 @@
-import {books} from "./books";
+import {developers} from "./developers";
+import {Developer} from "./types/Developer";
+import {Resolvers} from "../resolvers-types";
 
-export default {
+const resolvers: Resolvers = {
     Query: {
-        books,
+        developers,
     },
+    Developer
 };
+
+export default resolvers

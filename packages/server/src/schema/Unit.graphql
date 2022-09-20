@@ -1,0 +1,9 @@
+type Unit {
+    id: ID!
+    number: Int!
+    floor: Int!
+}
+
+extend type ApartmentsHouse {
+    units: [Unit!]!
+}

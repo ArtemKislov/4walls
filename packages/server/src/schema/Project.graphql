@@ -1,0 +1,8 @@
+type Project {
+    id: ID!
+    name: String!
+}
+
+extend type Developer {
+    projects: [Project!]!
+}

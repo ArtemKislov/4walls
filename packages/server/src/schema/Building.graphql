@@ -1,0 +1,17 @@
+type House {
+    id: ID!
+    floors: Int!
+    area: Int!
+}
+
+type ApartmentsHouse {
+    id: ID!
+    floors: Int!
+    elevator: Boolean!
+}
+
+union Building = House | ApartmentsHouse
+
+extend type Project {
+    buildings: [House!]!
+}
