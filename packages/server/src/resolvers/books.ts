@@ -1,3 +1,5 @@
+import {QueryResolvers} from "../resolvers-types";
+
 const bookss = [
     {
         title: 'The Awakening',
@@ -9,4 +11,4 @@ const bookss = [
     },
 ];
 
-export const books = () => bookss
+export const books: QueryResolvers['books'] = () => bookss
