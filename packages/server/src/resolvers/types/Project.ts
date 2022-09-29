@@ -1,19 +1,16 @@
 import {ProjectResolvers} from "../../resolvers-types";
-
-const houses = [
-    {
-        id: '1',
-        floors: 4,
-    },
-    {
-        id: '2',
-        floors: 2
-    }
-]
+import {prisma} from "../../prisma";
 
 export const Project: ProjectResolvers = {
-    buildings: (parent, args) => {
-        console.log(parent)
-        return houses
+    buildings: async (parent, args) => {
+        const buildings = await prisma.building.findMany({ where: { projectId: parent.id }, include: {
+            Condo: true,
+                SFHome: true
+        } })
+        return buildings.map(building => ({
+            ...building,
+            ...building.Condo,
+            ...building.SFHome
+        }))
     }
 }

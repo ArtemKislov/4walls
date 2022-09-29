@@ -1,19 +1,8 @@
 import {DeveloperResolvers} from "../../resolvers-types";
-
-const projects = [
-    {
-        id: '1',
-        name: 'project 1',
-    },
-    {
-        id: '2',
-        name: 'project 2',
-    }
-]
+import {prisma} from "../../prisma";
 
 export const Developer: DeveloperResolvers = {
-    projects: (parent, args) => {
-        console.log(parent)
-        return projects
+    projects: async (parent, args) => {
+        return await prisma.project.findMany({ where: { developerId: parent.id } })
     }
 }

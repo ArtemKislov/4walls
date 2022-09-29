@@ -1,17 +1,18 @@
-type House {
+type SFHome {
     id: ID!
     floors: Int!
     area: Int!
+    chimney: Boolean!
 }
 
-type ApartmentsHouse {
+type Condo {
     id: ID!
     floors: Int!
     elevator: Boolean!
 }
 
-union Building = House | ApartmentsHouse
+union Building = SFHome | Condo
 
 extend type Project {
-    buildings: [House!]!
+    buildings: [Building!]!
 }

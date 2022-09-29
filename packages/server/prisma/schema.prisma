@@ -11,6 +11,51 @@ datasource db {
 }
 
 model Developer {
-    id   String @id @default(uuid())
-    name String
+  id       String    @id @default(uuid())
+  name     String
+  projects Project[]
+}
+
+model Project {
+  id          String     @id @default(uuid())
+  name        String
+  developer   Developer  @relation(fields: [developerId], references: [id])
+  developerId String
+  buildings   Building[]
+}
+
+model Address {
+  id       String    @id @default(uuid())
+  line1    String
+  line2    String
+  city     String
+  state    String
+  country  String
+  Building Building?
+}
+
+model Building {
+  id        String  @id @default(uuid())
+  address   Address @relation(fields: [addressId], references: [id])
+  addressId String  @unique
+  project   Project @relation(fields: [projectId], references: [id])
+  projectId String
+  floors Int
+  Condo     Condo?
+  SFHome     SFHome?
+}
+
+model Condo {
+  id         String   @id @default(uuid())
+  elevator   Boolean
+  building   Building @relation(fields: [buildingId], references: [id])
+  buildingId String   @unique
+}
+
+model SFHome {
+  id         String   @id @default(uuid())
+  building   Building @relation(fields: [buildingId], references: [id])
+  buildingId String   @unique
+  area Int
+  chimney Boolean
 }

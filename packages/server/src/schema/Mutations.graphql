@@ -1,0 +1,6 @@
+type Mutation {
+    createDeveloper(id: ID! name: String!): Developer!
+    createProject(id: ID! developerId: ID! name: String!): Project!
+    createCondo(id: ID! projectId: ID! floors: Int!, elevator: Boolean!): Condo!
+    createSFHome(id: ID! projectId: ID! floors: Int!, area: Int! chimney: Boolean!): SFHome!
+}
