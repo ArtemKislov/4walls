@@ -1,5 +1,7 @@
 import {ProjectResolvers} from "../../resolvers-types";
 import {prisma} from "../../prisma";
+import {project} from "../queries/project";
+import {ApolloError} from "apollo-server";
 
 export const Project: ProjectResolvers = {
     buildings: async (parent, args) => {
@@ -12,5 +14,11 @@ export const Project: ProjectResolvers = {
             ...building.Condo,
             ...building.SFHome
         }))
+    },
+    developer: async (parent) => {
+        if (!parent.developer?.id) throw new ApolloError('parent.developer.id required')
+        const developer = await prisma.developer.findUnique({ where: { id: parent.developer.id } })
+        if (!developer) throw new ApolloError(`Project without developer`)
+        return developer
     }
 }
