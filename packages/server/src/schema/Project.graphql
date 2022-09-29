@@ -4,5 +4,5 @@ type Project {
 }
 
 extend type Developer {
-    projects: [Project!]!
+    projects(siblings: Boolean = false): [Project!]!
 }
