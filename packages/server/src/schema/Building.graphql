@@ -1,17 +1,20 @@
-type SFHome {
+interface Building {
+    id: ID!
+    floors: Int!
+}
+
+type SFHome implements Building{
     id: ID!
     floors: Int!
     area: Int!
     chimney: Boolean!
 }
 
-type Condo {
+type Condo implements Building{
     id: ID!
     floors: Int!
     elevator: Boolean!
 }
-
-union Building = SFHome | Condo
 
 extend type Project {
     buildings: [Building!]!
