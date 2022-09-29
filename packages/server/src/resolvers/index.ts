@@ -1,4 +1,5 @@
 import {developers} from "./queries/developers";
+import {project} from "./queries/project";
 import {Developer} from "./types/Developer";
 import {Project} from "./types/Project";
 import {Resolvers} from "../resolvers-types";
@@ -10,6 +11,7 @@ import {createSFHome} from "./mutations/createSFHome";
 const resolvers: Resolvers = {
     Query: {
         developers,
+        project
     },
     Mutation: {
         createDeveloper,

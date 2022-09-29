@@ -1,3 +1,4 @@
 type Query {
     developers: [Developer!]!
+    project(id: ID!): Project!
 }
