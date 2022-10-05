@@ -1,0 +1,20 @@
+type Apartment {
+    id: ID!
+    floor: Int!
+    area: Int!
+    price: Int!
+    rooms: Int!
+    # calculated
+    priceMerMeter: Float!
+    state: ApartmentState!
+}
+
+enum ApartmentState {
+    AVAILABLE
+    RESERVED
+    SOLD
+}
+
+extend type Condo {
+    apartments(state: ApartmentState): [Apartment!]!
+}

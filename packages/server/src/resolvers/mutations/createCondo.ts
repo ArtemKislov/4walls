@@ -28,6 +28,7 @@ export const createCondo: MutationResolvers['createCondo'] = async (parent, args
             floors: project.floors,
             Condo: {
                 create: {
+                    id: project.id,
                     elevator: project.elevator
                 }
             }

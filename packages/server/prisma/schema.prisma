@@ -40,22 +40,40 @@ model Building {
   addressId String  @unique
   project   Project @relation(fields: [projectId], references: [id])
   projectId String
-  floors Int
+  floors    Int
   Condo     Condo?
-  SFHome     SFHome?
+  SFHome    SFHome?
 }
 
 model Condo {
-  id         String   @id @default(uuid())
+  id         String      @id @default(uuid())
   elevator   Boolean
-  building   Building @relation(fields: [buildingId], references: [id])
-  buildingId String   @unique
+  building   Building    @relation(fields: [buildingId], references: [id])
+  buildingId String      @unique
+  apartments Apartment[]
 }
 
 model SFHome {
   id         String   @id @default(uuid())
   building   Building @relation(fields: [buildingId], references: [id])
   buildingId String   @unique
-  area Int
-  chimney Boolean
+  area       Int
+  chimney    Boolean
+}
+
+enum ApartmentState {
+    AVAILABLE
+    RESERVED
+    SOLD
+}
+
+model Apartment {
+  id      String @id @default(uuid())
+  floor   Int
+  area    Int
+  price   Int
+  rooms   Int
+  state   ApartmentState @default(AVAILABLE)
+  condo   Condo  @relation(fields: [condoId], references: [id])
+  condoId String
 }

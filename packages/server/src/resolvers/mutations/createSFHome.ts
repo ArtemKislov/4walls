@@ -29,6 +29,7 @@ export const createSFHome: MutationResolvers['createSFHome'] = async (parent, ar
             floors: project.floors,
             SFHome: {
                 create: {
+                    id: project.id,
                     chimney: project.chimney,
                     area: project.area
                 }

@@ -10,7 +10,7 @@ type SFHome implements Building{
     chimney: Boolean!
 }
 
-type Condo implements Building{
+type Condo implements Building {
     id: ID!
     floors: Int!
     elevator: Boolean!
@@ -18,4 +18,8 @@ type Condo implements Building{
 
 extend type Project {
     buildings: [Building!]!
+}
+
+extend type Apartment {
+    condo: Condo!
 }

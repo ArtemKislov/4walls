@@ -4,6 +4,7 @@ generates:
     config:
       contextType: ./context#Context
       useIndexSignature: true
+      enumsAsTypes: true
       defaultMapper: DeepPartial<{T}> # https://github.com/dotansimha/graphql-code-generator/issues/3324
     plugins:
       - typescript

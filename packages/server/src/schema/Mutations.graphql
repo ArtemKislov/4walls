@@ -3,4 +3,13 @@ type Mutation {
     createProject(id: ID! developerId: ID! name: String!): Project!
     createCondo(id: ID! projectId: ID! floors: Int!, elevator: Boolean!): Condo!
     createSFHome(id: ID! projectId: ID! floors: Int!, area: Int! chimney: Boolean!): SFHome!
+    createApartment(
+        id: ID!
+        condoId: ID!
+        floor: Int!
+        area: Int!
+        price: Int!
+        rooms: Int!
+    ): Apartment!
+    bookApartment(id: ID!): Boolean!
 }
